@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart City Route Finder</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">⌁</span><span>Smart City<br><b>Route Finder</b></span></a>
+  <nav><a class="active" href="#home">Home</a><a href="#planner">Find Route</a><a href="#map">City Map</a><a href="#algorithms">Algorithms</a></nav>
+  <span class="tag">C++ · DSA Project</span>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="intro">
+      <span class="eyebrow">GRAPH-BASED NAVIGATION</span>
+      <h1>Find your <span>best route.</span></h1>
+      <p>Explore a sample smart-city road network and compare routes using classic graph algorithms.</p>
+      <div class="stats"><div><strong>8</strong><small>Locations</small></div><div><strong>14</strong><small>Road connections</small></div><div><strong>3</strong><small>Algorithms</small></div></div>
+    </div>
+    <section class="planner panel" id="planner">
+      <div class="panel-heading"><div><span class="pin">⌖</span><div><h2>Plan your journey</h2><p>Choose your start and destination</p></div></div><span class="live"><i></i> DEMO NETWORK</span></div>
+      <div class="fields">
+        <label>FROM <select id="from"></select></label>
+        <button class="swap" id="swap" title="Swap locations">⇅</button>
+        <label>TO <select id="to"></select></label>
+      </div>
+      <label class="algorithm-label">ROUTE ALGORITHM
+        <select id="algorithm"><option value="dijkstra">Dijkstra — shortest distance</option><option value="bfs">BFS — fewest road segments</option><option value="dfs">DFS — depth-first traversal</option></select>
+      </label>
+      <button class="primary" id="find">Find best route <span>→</span></button>
+      <p class="hint">Dijkstra is recommended for the minimum-distance route.</p>
+    </section>
+  </section>
+
+  <section class="workspace">
+    <div class="map-panel panel" id="map">
+      <div class="section-head"><div><h2>City road network</h2><p>Nodes represent locations · edges represent roads</p></div><div class="legend"><span><i class="road"></i> Road</span><span><i class="route"></i> Selected route</span></div></div>
+      <div class="map-canvas">
+        <svg id="graph" viewBox="0 0 760 390" role="img" aria-label="Interactive graph of city locations">
+          <g id="edges"></g><g id="edgeLabels"></g><g id="nodes"></g>
+        </svg>
+      </div>
+      <div class="map-foot"><span>● Illustrative distances, not live traffic data</span><span>Undirected weighted graph</span></div>
+    </div>
+    <aside class="result panel">
+      <div class="section-head"><div><h2>Route summary</h2><p id="resultSubtitle">Your result will appear here</p></div></div>
+      <div class="empty" id="empty"><div class="empty-icon">⌁</div><h3>Ready to navigate?</h3><p>Select two locations and click <b>Find best route</b> to run the C++ graph algorithm.</p></div>
+      <div id="routeResult" hidden>
+        <div class="metric"><span>Shortest distance</span><strong id="distance">—</strong></div>
+        <div class="metric"><span>Estimated travel time</span><strong id="time">—</strong></div>
+        <div class="route-title">ROUTE STEPS</div><ol id="steps" class="steps"></ol>
+        <div class="algorithm-note" id="algorithmNote"></div>
+      </div>
+      <div class="error" id="error" hidden></div>
+    </aside>
+  </section>
+
+  <section class="algorithm-section" id="algorithms">
+    <div class="section-head"><div><h2>Algorithms behind the route</h2><p>One graph, three different traversal strategies</p></div></div>
+    <div class="algorithm-cards">
+      <article class="algo-card selected"><span class="algo-icon">◎</span><h3>Dijkstra's Algorithm</h3><p>Finds the minimum total edge weight using a min-priority queue.</p><code>O((V + E) log V)</code></article>
+      <article class="algo-card"><span class="algo-icon">⇢</span><h3>Breadth-First Search</h3><p>Explores level by level and finds a route with the fewest edges.</p><code>O(V + E)</code></article>
+      <article class="algo-card"><span class="algo-icon">↳</span><h3>Depth-First Search</h3><p>Explores one branch deeply before backtracking.</p><code>O(V + E)</code></article>
+    </div>
+  </section>
+  <footer>SMART CITY ROUTE FINDER <span>Built with C++17 · HTML · CSS · JavaScript</span></footer>
+</main>
+<script src="/app.js"></script>
+</body></html>
